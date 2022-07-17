@@ -1,4 +1,4 @@
-
+import styles from "./App.module.css"
 import { useEffect, useState} from "react";
 
 function App() {
@@ -7,13 +7,18 @@ function App() {
   const [userMoney, setUserMoney] = useState("");
   const [selectCoin, setSelectCoin] = useState(false);
   const [symbols, setSymbols] = useState(null);
+  const [selectCoinName, setSelectCoinName] = useState("");
+  const [selectCoinPrice, setSelectCoinPrice] = useState(null);
 
   const onSelectCoin = (event) => {
     setSelectCoin(true);
     const symbol = coins[event.target.selectedIndex-1].symbol;
     const price = coins[event.target.selectedIndex-1].quotes.USD.price;
+    const name = coins[event.target.selectedIndex-1].name
 
     setSymbols(symbol);
+    setSelectCoinName(name);
+    setSelectCoinPrice(price);
 
 
   }
@@ -32,23 +37,36 @@ function App() {
     });
   }, []);
   return ( 
-    <div>
+    <div className={styles.App}>
       <h1>The Coins ! {loading ? null : `(${coins.length})`}</h1>
       {loading ? <strong>Loading...</strong> : 
       <form>
         <br/>
-        <select className="select" onChange={onSelectCoin}>
-          <option> -- Select the Coin ! --</option>
+        <select className={styles.select} onChange={onSelectCoin}>
+          <option> ------------------ Select the Coin ! ------------------</option>
           {coins.map((coin) =>
           <option key={coin.id}> {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD </option>
           )}
         </select>
 
-        {selectCoin ? <h1> USD to {symbols}</h1> : null}
         {selectCoin ? 
-        <div>
+        <div className={styles.afterSelect}>
+          <h2> USD to {symbols} Converter</h2>
+
+          <form>
           <input onChange={onChange} type="number" value={userMoney}  placeholder="Write your money ($)..."/> 
-          <input placeholder=""/> 
+          <label> USD </label>
+
+          &nbsp;
+
+          <label> = </label>
+
+          &nbsp;
+
+          <input disabled onChange={onChange} value={userMoney != null ?  (userMoney/selectCoinPrice).toFixed(5) : null} placeholder={selectCoinName}/> 
+          <label> {symbols} </label>
+          </form>
+
         </div>: null}
       </form>}
 
