@@ -1,26 +1,58 @@
 
-import { useState} from "react";
+import { useEffect, useState} from "react";
 
 function App() {
-  const [toDo, setToDo] = useState("")
-  const [toDos, setToDos] = useState([]) 
-  const onChange =(event) => setToDo(event.target.value);
-  const onSubmit = (event) => {
-    event.preventDefault();
-    console.log(toDo);
-    if(toDo == "") {
-      return;
-    }
-    setToDos((currentArray) => [toDo, ...currentArray]);
-    setToDo('');
+  const [loading, setLoading] = useState(true);
+  const [coins, setCoins] = useState([]);
+  const [userMoney, setUserMoney] = useState("");
+  const [selectCoin, setSelectCoin] = useState(false);
+  const [symbols, setSymbols] = useState(null);
+
+  const onSelectCoin = (event) => {
+    setSelectCoin(true);
+    const symbol = coins[event.target.selectedIndex-1].symbol;
+    const price = coins[event.target.selectedIndex-1].quotes.USD.price;
+
+    setSymbols(symbol);
+
+
+  }
+
+  const onChange = (event) => {
+    setUserMoney(event.target.value);
+    console.log(event.target.value);
   };
+
+  useEffect(()=>{
+    fetch('https://api.coinpaprika.com/v1/tickers')
+    .then((response)=> response.json()) //then은 서버에서 데이터를 가져오는 작업이 완료된 이후에 then의 인자에 들어가있는 함수가 실행
+    .then((json) => {
+      setCoins(json);
+      setLoading(false);
+    });
+  }, []);
   return ( 
     <div>
-      <h1>My To Dos {(toDos.length)}</h1>
-      <form onSubmit={onSubmit}>
-      <input onChange={onChange} value={toDo} type="text" placeholder="Write yout To Do..."/>
-      <button>Add ToDo</button>
-      </form>
+      <h1>The Coins ! {loading ? null : `(${coins.length})`}</h1>
+      {loading ? <strong>Loading...</strong> : 
+      <form>
+        <br/>
+        <select className="select" onChange={onSelectCoin}>
+          <option> -- Select the Coin ! --</option>
+          {coins.map((coin) =>
+          <option key={coin.id}> {coin.name} ({coin.symbol}): ${coin.quotes.USD.price} USD </option>
+          )}
+        </select>
+
+        {selectCoin ? <h1> USD to {symbols}</h1> : null}
+        {selectCoin ? 
+        <div>
+          <input onChange={onChange} type="number" value={userMoney}  placeholder="Write your money ($)..."/> 
+          <input placeholder=""/> 
+        </div>: null}
+      </form>}
+
+    
     </div>
   );
 }
