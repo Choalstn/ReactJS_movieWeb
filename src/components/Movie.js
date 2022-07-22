@@ -14,21 +14,8 @@ function Movie({title, coverImg, summary, genres, id}) {
         <div className={style.back}>
           <div>
           <Link to={`/movie/${id}`} className={style.backLink}>
-            <h2 className={style.title}> 
-              {title}  
-            </h2>
-
-            <ul>
-              {genres.map((g) => (
-              <li key={g}>{g}</li>
-              ))}
-              </ul>
-
-            
-
-            
-            <p className={style.detail}> {summary}  </p>
-              </Link>
+            <h2> {title} </h2>
+          </Link>
             </div>
         </div>
 

@@ -1,0 +1,83 @@
+.logo{
+    color: red;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 35px;
+    margin-left: 20px;
+    vertical-align: middle;
+    padding: 10px;
+    text-decoration: none;
+  }
+
+  .loader {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 300;
+  }
+
+  .img{
+    margin-top: 10px;
+    width: 330px;
+    margin: 0 auto;
+  }
+
+  .detail_left {
+    width: 40%;
+    min-width: 400px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 15px;
+    float: left;
+ 
+
+  }
+
+  .detail_detail {
+    white-space: nowrap;
+    display: flex;
+    gap: 10px;
+    width: 50%;
+    justify-content: space-between;
+  }
+
+  .detail_right {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+    margin-top: 90px;
+    flex-direction: column;
+    max-width: 700px;
+  }
+
+  .title {
+    font-size: 30px;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+
+  .movie_detail {
+    position: relative;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+  }
+
+  .detail_description {
+    font-size: 18px;
+    width: 90%;
+    line-height: 1.5em;
+    margin-bottom: 30px;
+    color: #effd4a;
+    min-width: 400px;
+  }
+
+

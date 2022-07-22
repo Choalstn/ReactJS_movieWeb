@@ -1,6 +1,7 @@
 import { useEffect, useState} from "react";
 import Movie from "../components/Movie";
-import style from "./Home.module.css"
+import style from "./Home.module.css";
+import {Link} from "react-router-dom";
 
 function Home() {
     const [loading, setLoading] = useState(true); 
@@ -25,7 +26,11 @@ function Home() {
         )
         : (
             <>
-            <div className={style.logo}>MINFLIX</div>
+            <div>
+                <Link to="/" className={style.logo}>
+                    MINFLIX
+                </Link>
+            </div>
 
 
             <div className={style.entireMovie}>

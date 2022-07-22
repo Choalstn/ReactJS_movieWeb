@@ -1,5 +1,4 @@
 body {
-    margin: 0;
     background-color: #141414;
     color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -9,13 +8,12 @@ body {
   .container {
     height: 100%;
     /*display: flex;*/
-    justify-content: center;
+    
   }
 
   .logo{
     color: red;
     font-weight: bold;
-    border: solid 1px white;
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
@@ -23,6 +21,7 @@ body {
     margin-left: 20px;
     vertical-align: middle;
     padding: 10px;
+    text-decoration: none;
 
   }
   
@@ -37,24 +36,25 @@ body {
   
   .movies {
     display:flex;
-    grid-template-columns: repeat(2, minmax(400px, 1fr));
-    grid-gap: 100px;
+    align-items:center;
+    gap: 100px;
     padding: 50px;
     width: 80%;
+    margin: auto;
     padding-top: 70px;
-    margin-left: 80px;
     overflow-x: scroll;
-    border: solid 1px white;
+
   }
 
   .entireMovie {
     display: grid;
     place-content: center;
-    border: solid 1px white;
+
   }
 
   .movies::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
+    width: px;
   }
   
   @media screen and (max-width: 1090px) {
