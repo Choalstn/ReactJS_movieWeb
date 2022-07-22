@@ -1,0 +1,68 @@
+.container{
+    width: auto;
+    height: auto;
+    margin: auto;
+    position: relative;
+    cursor: pointer;
+    perspective: 100rem;
+ 
+  
+  }
+
+  .front{
+    width: 200px;
+    height: 300px;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-perspective: 0;
+    -webkit-transition: 1s;
+    backface-visibility: hidden; /*뒷면 숨기기*/
+    visibility: visible;
+    transition: 1s;
+    position: absolute;
+
+    transform: rotateY(0deg);
+  }
+
+  .back{
+    width: 230px;
+    height: 345px;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-perspective: 0;
+    -webkit-transition: 1s;
+    /*backface-visibility: hidden; /*뒷면 숨기기*/
+    /*visibility: visible;*/
+    transition: 1s;
+
+    text-decoration-line: none;
+    background-color: black;
+    transform: rotateY(-180deg);
+  }
+  
+  .backLink {
+    margin: auto;
+    text-decoration: none;
+    color: white;
+  }
+
+  .back h2 {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 20px;
+  }
+
+  .back p {
+    padding-left: 3%;
+    text-align: start;
+    font-size: 10px
+  }
+
+  
+  .container:hover .front{
+    transform: rotateY(180deg); /*y축을 기준으로 180도까지회전*/
+  }
+  
+  .container:hover .back{
+    transform: rotateY(0deg);/*y축을 기준으로 0도 까지회전*/
+  }

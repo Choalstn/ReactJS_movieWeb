@@ -19,24 +19,26 @@ function Home() {
     return ( 
     <div className={style.container}>
         {loading ? (
-            <div className={style.loading_page}>
+            <div className={style.loader}>
                 <h1>Loading...</h1> 
             </div>
         )
         : (
-        <div className={style.movies}>
-            {movies.map((movie) => (
-            <Movie
-            key={movie.id}
-            title={movie.title} 
-            coverImg={movie.medium_cover_image} 
-            summary={movie.summary} 
-            genres={movie.genres}
-            id = {movie.id}/>
-            ))}
+            <>
+            <div className={style.logo}>MINFLIX</div>
+
+
+            <div className={style.entireMovie}>
+            <div className={style.movies}>
+                {movies.map((movie) => (
+                <Movie key={movie.id} title={movie.title} coverImg={movie.medium_cover_image} summary={movie.summary} genres={movie.genres} id = {movie.id}/>
+                ))}
             </div>
+            </div>
+                </>
             )}
             </div>
-            );}
+            );
+            }
 
 export default Home;

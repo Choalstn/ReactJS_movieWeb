@@ -8,8 +8,22 @@ body {
 
   .container {
     height: 100%;
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
+  }
+
+  .logo{
+    color: red;
+    font-weight: bold;
+    border: solid 1px white;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    font-size: 35px;
+    margin-left: 20px;
+    vertical-align: middle;
+    padding: 10px;
+
   }
   
   .loader {
@@ -22,12 +36,25 @@ body {
   }
   
   .movies {
-    display: grid;
+    display:flex;
     grid-template-columns: repeat(2, minmax(400px, 1fr));
     grid-gap: 100px;
     padding: 50px;
     width: 80%;
     padding-top: 70px;
+    margin-left: 80px;
+    overflow-x: scroll;
+    border: solid 1px white;
+  }
+
+  .entireMovie {
+    display: grid;
+    place-content: center;
+    border: solid 1px white;
+  }
+
+  .movies::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
   }
   
   @media screen and (max-width: 1090px) {
@@ -35,15 +62,4 @@ body {
       grid-template-columns: 1fr;
       width: 100%;
     }
-  }
-
-  .loading_page {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 15px;
-    color: rgba(104, 228, 0, 1);
-    font-family: "Press Start 2P", cursive;
-    line-height: 2.5em;
   }
